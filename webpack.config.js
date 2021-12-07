@@ -17,6 +17,8 @@ const path=require("path");
 const loader = require("sass-loader");
 // 生产模式打包，会把css分离为独立的css文件，不会写入到js中
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { resolve } = require("path");
 // 判断是否是开发模式
 const devMode=process.env.NODE_ENV!='production';
 module.exports={
@@ -26,14 +28,21 @@ module.exports={
     },
     output:{
         path:path.resolve(__dirname,'dist'),
-        filename:"[name].main.js"
+        filename:"js/[name].main.js"
     },
     plugins:[
         new MiniCssExtractPlugin({
-            filename:devMode?'[name].css':'[name]-[hash].css',
+            filename:devMode?'css/[name].css':'css/[name]-[hash].css',
             chunkFilename:devMode?'[id].css':'[id]-[hash].css'
+        }),
+        new HtmlWebpackPlugin({
+            filename:"index.html",
+            chunks:["index"],
+            template:'./public/index.html',
+            title:'dx'
         })
     ],
+    // 配置各种静态资源
     module:{
         rules:[
             // 正则表达式，匹配js文件
@@ -66,5 +75,9 @@ module.exports={
         ]
     },
     mode:"development",
-    devtool:false
+    devtool:false,
+    devServer:{
+        port:8080,
+        open:true
+    }
 }

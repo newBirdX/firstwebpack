@@ -1,0 +1,35 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development npx webpack",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^4.3.0",
+    "html-webpack-plugin": "^4.5.2",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

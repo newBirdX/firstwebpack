@@ -1,0 +1,38 @@
+首先在package.json下载相关的语法插件babel loader
+安装babel核心
+cnpm install -D @babel/core
+安装babel-loader
+cnpm install -D babel/loader
+安装es6语法解释器
+cnpm install -D @babel/preset-env
+安装react语法解释器
+cnpm install -D @babel/preset-react
+
+
+生产环境依赖中安装react 和react-dom
+cnpm install react -S
+cnpm install react-dom -S
+
+webpack.config.js中配置
+babel配置（可以独立抽离为.babelrc文件）
+<1> module:{
+        rules:[
+            // 正则表达式，匹配js文件
+            // 一个{}就是一个loader，现在是bable loader
+            {
+                test:/\.js$/,   //匹配.js文件
+                exclude:/(node_modules|bower_components)/,  //忽略目录
+                use:{
+                    loader:'babel-loader',    //使用babel-loader
+                    options:{
+                        presets:['@babel/preset-env','@babel/preset-react']   //使用的语法解释器
+                    }
+                }
+            }
+        ]
+    }
+
+<2>.babelrc文件（json格式）
+ {
+"presets":["@babel/preset-env","@babel/preset-react"]   //使用的语法解释器
+}

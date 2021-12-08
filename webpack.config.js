@@ -21,6 +21,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { resolve } = require("path");
 // 判断是否是开发模式
 const devMode=process.env.NODE_ENV!='production';
+const {CleanWebpackPlugin}=require('clean-webpack-plugin');
 module.exports={
     entry:{
         index:'./src/index.js',
@@ -28,7 +29,7 @@ module.exports={
     },
     output:{
         path:path.resolve(__dirname,'dist'),
-        filename:"js/[name].main.js"
+        filename:"js/[name]-[hash].main.js"
     },
     plugins:[
         new MiniCssExtractPlugin({
@@ -40,7 +41,8 @@ module.exports={
             chunks:["index"],
             template:'./public/index.html',
             title:'dx'
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
     // 配置各种静态资源
     module:{
@@ -71,13 +73,52 @@ module.exports={
             {
                 test:/\.scss$/,
                 use:[{loader:devMode?'style-loader':MiniCssExtractPlugin.loader},{loader:'css-loader'},{loader:'sass-loader'}]
+            },
+            //图片loader
+            {
+                test:/\.(jpe?g|png|gif)$/,
+                use:[
+                    // {loader:'file-loader',
+                    // options:{
+                    //     name:'[name].[ext]',
+                    //     publicPath:'./../img',
+                    //     outputPath:'img/'
+                    // }},
+                    // {
+                    //     loader:'image-webpack-loader'
+                    // }
+                    {loader:'url-loader',
+                    options:{
+                        limit:8192,
+                        publicPath:'./../img',
+                        outputPath:'img/'
+                    }}
+                ]
+            },
+            {
+                test:/\.(ttf|eot|woff|woff2)$/,
+                loader:'file-loader',
+                options:{
+                    name:'[name].[ext]',
+                    publicPath:'./../font',
+                    outputPath:'font/'
+                }
             }
         ]
     },
     mode:"development",
     devtool:false,
     devServer:{
+        // contentBase:path.join(__dirname,'dist'),//指定webpack-dev-server服务器网站根目录
+        // conpress:true,
         port:8080,
-        open:true
+        open:true,
+        // proxy:{
+        //     "/data":{
+        //         "target":"http://www.bjlink32.com/data.php",//接口地址，跨域访问
+        //         "changeOrigin":true,//开启跨域
+        //         pathRewrite:{"^/data":""}
+        //     }
+        // }
     }
 }

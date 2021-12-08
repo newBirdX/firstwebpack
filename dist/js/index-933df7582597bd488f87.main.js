@@ -2,6 +2,20 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/img/1.jpg":
+/*!***********************!*\
+  !*** ./src/img/1.jpg ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("./../img/e95c9dd0286541d8e084b80cb5561d33.jpg");
+
+/***/ }),
+
 /***/ "./src/css/public.css":
 /*!****************************!*\
   !*** ./src/css/public.css ***!
@@ -41,6 +55,23 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -61,9 +92,13 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_public_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/public.css */ "./src/css/public.css");
+/* harmony import */ var _img_1_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./img/1.jpg */ "./src/img/1.jpg");
+
 
 var div1 = document.querySelector(".div1");
+var img2 = document.querySelector(".img1");
 div1.innerHTML = "<h3>测试哈哈</h3>";
+img2.src = _img_1_jpg__WEBPACK_IMPORTED_MODULE_1__["default"];
 })();
 
 /******/ })()
